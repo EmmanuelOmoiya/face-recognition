@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Upload your selfie images</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.jpg') }}">
+  </head>
+  <body>
+    <h1> Omo you must to upload all these images for this software </h1>
+    <p> ASVA is Fun </p>
+    <form id="upload-form" action="/upload-image" method="post" enctype="multipart/form-data">
+        <label for="person_name">Person Name:</label>
+        <input type="text" name="person_name" required>
+        <br>
+        <input type="file" name="file" accept=".png, .jpg, .jpeg" multiple required>
+        <input type="submit" value="Upload" onclick="submitForm()">
+    </form>
+
+    <script>
+      function submitForm() {
+        var form = document.getElementById('upload-form');
+        var personName = form.elements['person_name'].value;
+
+        if (!personName) {
+          alert('Please provide a name for the person.');
+          return false;
+        }
+
+        form.submit();
+        alert('Files successfully uploaded to ' + personName);
+      }
+    </script>
+  </body>
+</html>

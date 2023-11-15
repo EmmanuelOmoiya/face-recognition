@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<title>Face Recognition</title>
+<h1>Face Recognition</h1>
+{% if filename %}
+  <p>Original Image: {{ filename }}</p>
+  <img src="{{ url_for('uploaded_file', filename=filename) }}" alt="Original Image">
+  <p>Recognized Image: {{ output_filename }}</p>
+  <img src="{{ url_for('uploaded_file', filename=output_filename) }}" alt="Recognized Image">
+{% endif %}
+<form method=post enctype=multipart/form-data action="{{ url_for('upload_file') }}">
+  <input type=file name=file>
+  <input type=submit value=Upload>
+</form>
